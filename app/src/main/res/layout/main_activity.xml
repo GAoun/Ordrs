@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="2dp">
+
+    <LinearLayout
+        android:layout_width="850dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:itemTextColor="#fff"
+            android:layout_marginRight="2dp"
+            android:background="#60b0f4"
+            app:menu="@menu/categories" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/largeScreen"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ListView
+                    android:id="@+id/itemsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></ListView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/itemscounter"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:orientation="vertical"
+            android:background="#6c6c6c"></LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/SmallScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#C6c6c6"></LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
