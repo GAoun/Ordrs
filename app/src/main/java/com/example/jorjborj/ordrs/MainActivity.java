@@ -14,10 +14,13 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 /**
  * Created by jorjborj on 4/2/2018.
@@ -36,10 +39,15 @@ import java.lang.reflect.Field;
         // Large screen, LISTVIEW and adapters
         final View mainscreen = (View)findViewById(R.id.largeScreen);
         final ListView lv = (ListView)findViewById(R.id.itemsList);
-        String[] FoodValues = new String[] {"Chicken Salad", "Nazareth Breakfast", "Antricot" };
-        String[] DrinksValues = new String[] { "Cola","Sprite","Fanta","Water" };
-        String[] DessertsValues = new String[] { "Chocolate Cake", "Truffle", "Donuts" };
-        String[] AlcoholValues = new String[] { "Carlsberg", "Tuborg", "Corona", "Whiskey", "Arak" };
+        final ListView counterlv = (ListView)findViewById(R.id.counterlist);
+
+        //dummy data for now
+        final String[] FoodValues = new String[] {"Chicken Salad", "Nazareth Breakfast", "Antricot" };
+        final String[] DrinksValues = new String[] { "Cola","Sprite","Fanta","Water" };
+        final String[] DessertsValues = new String[] { "Chocolate Cake", "Truffle", "Donuts" };
+        final String[] AlcoholValues = new String[] { "Carlsberg", "Tuborg", "Corona", "Whiskey", "Arak" };
+
+        final ArrayList<String> orders = new ArrayList<String>();
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, FoodValues);
@@ -53,7 +61,18 @@ import java.lang.reflect.Field;
         final ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, AlcoholValues);
 
+        final ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this,android.R.layout.simple_expandable_list_item_1, orders);
+
         lv.setAdapter(adapter);
+        counterlv.setAdapter(adapter4);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                orders.add(FoodValues[position]);
+                adapter4.notifyDataSetChanged();
+            }
+        });
 
         nav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -61,15 +80,44 @@ import java.lang.reflect.Field;
                 switch (item.getItemId()){
                     case R.id.food:
                         lv.setAdapter(adapter);
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                orders.add(FoodValues[position]);
+                                adapter4.notifyDataSetChanged();
+
+                            }
+                        });
                         break;
                     case R.id.alcohol:
                         lv.setAdapter(adapter3);
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                orders.add(AlcoholValues[position]);
+                                adapter4.notifyDataSetChanged();
+                            }
+                        });
                         break;
                     case R.id.drinks:
                         lv.setAdapter(adapter1);
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                orders.add(DrinksValues[position]);
+                                adapter4.notifyDataSetChanged();
+                            }
+                        });
                         break;
                     case R.id.desserts:
                         lv.setAdapter(adapter2);
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                orders.add(DessertsValues[position]);
+                                adapter4.notifyDataSetChanged();
+                            }
+                        });
                         break;
                 }
                 return false;

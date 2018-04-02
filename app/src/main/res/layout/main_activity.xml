@@ -47,18 +47,70 @@
             android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/itemscounter"
             android:layout_width="match_parent"
-            android:layout_height="550dp"
-            android:orientation="vertical"
-            android:background="#6c6c6c"></LinearLayout>
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Order Summary"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="monospace"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/itemscounter"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            android:layout_marginTop="2dp"
+            android:background="#6c6c6c"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/counterlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </ListView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:id="@+id/SmallScreen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#C6c6c6"></LinearLayout>
+            android:background="#C6c6c6">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Price: "
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="monospace"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                />
+            <TextView
+                android:id="@+id/totalItems"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:fontFamily="monospace"
+                android:textSize="20dp"
+                android:textColor="#fff"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 
