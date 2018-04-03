@@ -15,7 +15,7 @@
             android:id="@+id/navbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:itemTextColor="#fff"
+            app:itemTextColor="#000"
             android:layout_marginRight="2dp"
             android:background="#60b0f4"
             app:menu="@menu/categories" />
